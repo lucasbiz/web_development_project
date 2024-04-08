@@ -17,7 +17,7 @@ Gerenciamento de Usuários: Permitindo uma divisão clara de responsabilidades e
 
 O sistema é construído utilizando a Stack MERN, que inclui:
 - MongoDB NoSQL (Banco de Dados)
-- Express.js (Frameword para Back-End)
+- Express.js (Framework para Back-End)
 - React (Interface/Front-End)
 - Node.js(Back-end)
 
