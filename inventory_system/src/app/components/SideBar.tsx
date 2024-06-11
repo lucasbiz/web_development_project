@@ -2,12 +2,15 @@
 
 import Image from "next/image";
 import { useState } from "react"
+import SidebarItem from "./SideBarItem";
 
 const SideBar = () => {
 
+
+
     return (
         <main>
-        <aside className="h-screen w-72 fixed top-0 left-0 justify-center">
+        <aside className="h-screen w-52 fixed top-0 left-0 justify-center">
             <div className="bg-[#1D1317] h-full flex flex-col items-center">
 
                 {/*logo e nome*/}
@@ -21,11 +24,11 @@ const SideBar = () => {
 
                 {/*Elementos*/}
 
-                
-                <ul className="w-3/4">
-                    <li><a href="/dashboard">Dashboard</a></li>
-                    <li><a href="/account">Account</a></li>
-                    <li><a href="/subsidiaries">Subsidiaries</a></li>
+
+                <ul className="w-3/4 flex flex-col justify-center items-center">
+                    <li><SidebarItem href="/dashboard" icon="/home.png" /></li>
+                    <li><SidebarItem href="/account" icon="/user.png"/></li>
+                    <li><SidebarItem href="/subsidiaries" icon="/location.png"/></li>
                 </ul>
                 
                 
