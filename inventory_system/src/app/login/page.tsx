@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Page() {
     return(
         
@@ -20,8 +22,10 @@ export default function Page() {
                 </div>
 
                 <div className="flex flex-row justify-center mt-5">
-                    <a href="/register"><button className="mx-[50px] p-3 bg-[#40B797] rounded-xl hover:bg-[#40b797b0] text-2xl">Register</button></a>
-                    <button className="mx-[50px] p-3 px-6 bg-[#40B797] rounded-xl hover:bg-[#40b797b0] text-2xl">Next</button>
+                    <Link legacyBehavior href={"/register"}><button className="mx-[50px] p-3 bg-[#40B797] rounded-xl hover:bg-[#40b797b0] text-2xl">Register</button></Link>
+                    
+                    <Link legacyBehavior href={"/dashboard"}><button className="mx-[50px] p-3 px-6 bg-[#40B797] rounded-xl hover:bg-[#40b797b0] text-2xl">Next</button></Link>
+                   
                 </div>
  
                 
