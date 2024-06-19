@@ -24,6 +24,7 @@ const SideBar = () => {
                     <li><SidebarItem href="/dashboardSubsidiary" icon="/location.png"/></li>
 
                     <li><SidebarItem href="/account" icon="/user.png"/></li>
+                    <li><SidebarItem href="/stock" icon="/estoque.png"/></li>
                 </ul>
                 
                 
