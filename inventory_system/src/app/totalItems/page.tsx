@@ -9,9 +9,11 @@ export default function Page() {
             <SideBar></SideBar>
 
             <div className="h-full w-full flex flex-col items-center">
-                <p>Graficos</p>
+                <h1 className="text-4xl">All Products</h1>
+                <ItemCard name="Banana" quantity={3} sellPrice={2} buyPrice={1}></ItemCard>
+                <ItemCard name="Maçã" quantity={20} sellPrice={3} buyPrice={1.5}></ItemCard>
             </div>
-           
+            
             
         </main>
     );

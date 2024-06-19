@@ -27,8 +27,13 @@ const SideBar = () => {
 
                 <ul className="w-3/4 flex flex-col justify-center items-center">
                     <li><SidebarItem href="/dashboard" icon="/home.png" /></li>
-                    <li><SidebarItem href="/account" icon="/user.png"/></li>
+                    <li><SidebarItem href="/totalItems" icon="/home.png" /></li>
+                
                     <li><SidebarItem href="/subsidiaries" icon="/location.png"/></li>
+                    <li><SidebarItem href="/dashboardSubsidiary" icon="/location.png"/></li>
+                    <li><SidebarItem href="/subsidiarieItems" icon="/location.png"/></li>
+
+                    <li><SidebarItem href="/account" icon="/user.png"/></li>
                 </ul>
                 
                 
