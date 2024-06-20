@@ -14,11 +14,11 @@ interface ItemCardProps {
 const ItemCard = ({name, quantity, sellPrice, buyPrice}: ItemCardProps) => {
 
     return (
-        <div className="ml-16 my-3 w-96 h-20 bg-[#513F46] rounded-2xl flex flex-row text-3xl align-middle items-center">
-            <p className="ml-5">{name}</p>
-            <p className="ml-14 ">{quantity}</p>
-            <p className="ml-14 ">{sellPrice}</p>
-            <p className="ml-14 ">{buyPrice}</p>
+        <div className="m-3 p-5 w-5/6 h-16 bg-[#9B9B9B] rounded-2xl flex flex-row text-2xl align-middle items-center">
+            <p className="w-72">{name}</p>
+            <p className="w-36">{quantity}</p>
+            <p className="w-36">{sellPrice}</p>
+            <p className="w-36">{buyPrice}</p>
         </div>
     );
   }
