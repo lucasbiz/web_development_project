@@ -16,7 +16,7 @@ export default function Page() {
                 <p className="my-7">{name}</p>
                 <p className="my-7">{email}</p>
 
-                <button className="bg-[#EB9F27] rounded-2xl p-3 my-10 text-3xl">Change password</button>
+                <button className="bg-[#EB9F27] rounded-2xl p-3 my-10 text-3xl hover:bg-[#CC8B24]">Change password</button>
             </div>
 
             
