@@ -1,4 +1,4 @@
-<h1>Projeto de Desenvolcimento Web</h1>
+<h1>Projeto de Desenvolvimento Web</h1>
 <h2>Sistema de Gestão de Estoque Doméstico</h2>
 
 Este projeto consiste em um sistema de gestão de estoque pessoal, projetado para residências grandes ou repúblicas onde múltiplas pessoas compartilham mercadorias de limpeza, alimentos, legumes, frutas e outros itens de compras em geral. A aplicação servirá para monitorar de maneira interativa estoque da despensa e da geladeira.
