@@ -16,7 +16,8 @@ app.post('/register', function(req, res) {
     const name = body.name
     const email = body.email
     const password = body.password
-    res.send(name + "Foi cadastrado com sucesso!")
+    console.log(name)
+    res.status(200).send(name + "Foi cadastrado com sucesso!")
 })
 
 
