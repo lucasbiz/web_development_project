@@ -16,8 +16,7 @@ app.post('/register', function(req, res) {
     const name = body.name
     const email = body.email
     const password = body.password
-    console.log(name)
-    res.status(200).send(name + "Foi cadastrado com sucesso!")
+    res.status(200).send(name + " Foi cadastrado com sucesso!")
 })
 
 
@@ -25,6 +24,7 @@ app.post('/register', function(req, res) {
 // AQUI AINDA FALTA TODO O TRATAMENTO DO LOGIN E CONEXÃO COM O DB
 app.post('/login', function(req, res) {
     const body = req.body
-    const name = body.name
+    const user = body.user
     const password = body.password
+    res.status(200).send(user + " Foi logado com sucesso!")
 })
