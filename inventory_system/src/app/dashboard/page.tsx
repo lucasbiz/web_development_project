@@ -97,10 +97,20 @@ export default function Page() {
           plugins: {
             legend: {
               position: 'top' as const,
+              labels: {
+                font: {
+                  size: 16,
+                },
+                color: '#FFFF', // Cor das labels na legenda
+              },
             },
             title: {
               display: true,
               text: 'Distribution of Items',
+            },
+            animation: {
+              animateScale: true,
+              animateRotate: true,
             },
           },
         };
@@ -113,8 +123,8 @@ export default function Page() {
             <SideBar></SideBar>
 
             <div className=" h-1/5 w-auto ml-52">
-                <p className="mt-10 ml-14">Procurar itens</p>
-                <input type="text" className="ml-10 rounded-2xl h-9 w-1/3 text-black px-3"/>
+                <p className="mt-16 ml-24">Search itens</p>
+                <input type="text" className="ml-20 rounded-2xl h-9 w-1/3 text-black px-3"/>
                 
             </div>
 
@@ -127,8 +137,15 @@ export default function Page() {
                 </div>
                 <div className="bg-[#2F2428] w-1/2 h-full flex justify-center items-center">
 
-                    <div className="bg-[#513F46] rounded-2xl h-4/5 w-3/4 flex flex-col items-center overflow-y-auto">
+                    <div className="bg-[#513F46] rounded-2xl h-4/5 w-5/6 flex flex-col items-center overflow-y-auto">
                         <h2 className="m-3 text-3xl">Itens in stock</h2>
+                        <div className="flex flex-row  w-full justify-start text-xl">
+                          <p className="ml-20">Name</p>
+                          <p className="ml-36">Quantity</p>
+                          <p className="ml-8">Sell Price</p>
+                          <p className="ml-7">Buy Price</p>
+                        </div>
+                        
                         {Object.keys(items).map((key) => {
                             const item = items[key];
                             return (
