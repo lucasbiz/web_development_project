@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    username: {
+    name: {
         type: String,
         required: true,
         unique: true,
@@ -23,12 +23,17 @@ const userSchema = new Schema({
         required: true,
         trim: true,
         minLength: 5
+    },
+    subsidiary: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Subsidiaries',
+        required: false // usuário pode não ter uma subsidiária associada inicialmente
     }
 }, {
     timestamps: true
 });
 
-// Middleware para hash da senha antes de salvar
+
 userSchema.pre('save', async function (next) {
     try {
         // Gera um salt
@@ -43,7 +48,6 @@ userSchema.pre('save', async function (next) {
     }
 });
 
-// Método para comparar a senha
 userSchema.methods.isValidPassword = async function (password) {
     try {
         return await bcrypt.compare(password, this.password);
@@ -52,6 +56,5 @@ userSchema.methods.isValidPassword = async function (password) {
     }
 };
 
-const User = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', userSchema);
 
-module.exports = User;
