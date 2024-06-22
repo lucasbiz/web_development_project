@@ -10,13 +10,11 @@ export default function Page() {
     const router = useRouter();
 
     const handleLoginClick = async () => {
-        const data = {
-            user: user,
-            password: password
-        };
-
+        const data = { "user": user,
+                       "password": password };
+        
         try {
-            const response = await fetch("http://127.0.0.1:3125/api/login", {
+            const response = await fetch("http://127.0.0.1:3125/login", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -44,11 +42,11 @@ export default function Page() {
                 <div className="flex flex-col justify-center m-5">
                     <p className="flex justify-center mr-64 text-white">User</p>
                     <div className="flex justify-center">
-                        <input
-                            type="text"
-                            className="h-14 w-80 text-white bg-[#40B797] rounded-lg text-2xl pl-5"
-                            value={user}
-                            onChange={(e) => setUser(e.target.value)}
+                        <input 
+                            type="text" 
+                            className="h-14 w-80 text-white bg-[#40B797] rounded-lg text-2xl pl-5" 
+                            value={user} 
+                            onChange={(e) => setUser(e.target.value)} 
                         />
                     </div>
                 </div>
@@ -56,11 +54,11 @@ export default function Page() {
                 <div className="flex flex-col justify-center m-5">
                     <p className="flex justify-center mr-56 text-white">Password</p>
                     <div className="flex justify-center">
-                        <input
-                            type="password"
-                            className="h-14 w-80 text-white bg-[#40B797] rounded-lg text-2xl pl-5"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+                        <input 
+                            type="password" 
+                            className="h-14 w-80 text-white bg-[#40B797] rounded-lg text-2xl pl-5" 
+                            value={password} 
+                            onChange={(e) => setPassword(e.target.value)} 
                         />
                     </div>
                 </div>
@@ -72,8 +70,8 @@ export default function Page() {
                         </button>
                     </Link>
 
-                    <button
-                        className="mx-[50px] p-3 px-6 bg-[#40B797] rounded-xl hover:bg-[#40b797b0] text-2xl text-white"
+                    <button 
+                        className="mx-[50px] p-3 px-6 bg-[#40B797] rounded-xl hover:bg-[#40b797b0] text-2xl text-white" 
                         onClick={handleLoginClick}
                     >
                         Next
