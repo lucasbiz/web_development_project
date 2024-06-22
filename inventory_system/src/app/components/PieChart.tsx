@@ -8,10 +8,32 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 interface PieChartProps {
   data: any;
-  options: any;
 }
 
-const PieChart: React.FC<PieChartProps> = ({ data, options }) => {
+const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: 'right' as const,
+      labels: {
+        font: {
+          size: 16,
+        },
+        color: '#FFFF', // Cor das labels na legenda
+      },
+    },
+    title: {
+      display: true,
+      text: 'Distribution of Items',
+    },
+    animation: {
+      animateScale: true,
+      animateRotate: true,
+    },
+  },
+};
+
+const PieChart: React.FC<PieChartProps> = ({ data}) => {
   return <Pie data={data} options={options} />;
 };
 
