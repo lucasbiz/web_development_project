@@ -112,8 +112,9 @@ export default function Page() {
         <main className="h-screen w-screen m-0 flex flex-col">
             <SideBar></SideBar>
 
-            <div className="bg-green-500 h-1/5 w-auto ml-52">
-                <p className="text-4xl text-white ml-5">filtros</p>
+            <div className=" h-1/5 w-auto ml-52">
+                <p className="mt-10 ml-14">Procurar itens</p>
+                <input type="text" className="ml-10 rounded-2xl h-9 w-1/3 text-black px-3"/>
                 
             </div>
 
