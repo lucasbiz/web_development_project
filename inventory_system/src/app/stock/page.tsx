@@ -1,18 +1,38 @@
-import Link from "next/link";
-import ItemCard from "../components/ItemCard";
+"use client"; // Marcar como componente de cliente
+
+import { useEffect, useState } from "react";
 import SideBar from "../components/SideBar";
 
+interface StockItem {
+    item: {
+        _id: string;
+        name: string;
+        sell_price: number;
+    };
+    quantity: number;
+}
+
 export default function Page() {
-    // Dados de exemplo para os produtos em estoque
-    const stockItems = [
-        { code: "001", name: "Produto A", unitPrice: 10.00, quantity: 5 },
-        { code: "002", name: "Produto B", unitPrice: 20.00, quantity: 3 },
-        { code: "003", name: "Produto C", unitPrice: 15.00, quantity: 7 },
-    ];
+    const [stockItems, setStockItems] = useState<StockItem[]>([]);
+
+    useEffect(() => {
+        // Fetch data from backend
+        const fetchStockItems = async () => {
+            try {
+                const response = await fetch("http://127.0.0.1:5000/api/stocks");
+                const data = await response.json();
+                setStockItems(data);
+            } catch (error) {
+                console.error("Failed to fetch stock items:", error);
+            }
+        };
+
+        fetchStockItems();
+    }, []);
 
     return (
         <main className="h-screen w-screen m-0 flex">
-            <SideBar></SideBar>
+            <SideBar />
 
             <div className="h-full w-full flex flex-col items-center ml-52">
                 <h1 className="text-4xl mt-16 mb-8">Estoque</h1>
@@ -26,13 +46,13 @@ export default function Page() {
                         <p>Preço Total</p>
                     </div>
 
-                    {stockItems.map((item, index) => (
+                    {stockItems.map((stock, index) => (
                         <div key={index} className="grid grid-cols-5 gap-2 text-lg mb-2 p-2 bg-slate-100 rounded-lg">
-                            <p>{item.code}</p>
-                            <p>{item.name}</p>
-                            <p>R$ {item.unitPrice.toFixed(2)}</p>
-                            <p>{item.quantity}</p>
-                            <p>R$ {(item.unitPrice * item.quantity).toFixed(2)}</p>
+                            <p>{stock.item._id}</p>
+                            <p>{stock.item.name}</p>
+                            <p>R$ {stock.item.sell_price.toFixed(2)}</p>
+                            <p>{stock.quantity}</p>
+                            <p>R$ {(stock.item.sell_price * stock.quantity).toFixed(2)}</p>
                         </div>
                     ))}
                 </div>
