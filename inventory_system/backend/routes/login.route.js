@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/users.model');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
+const JWT_SECRET = process.env.JWT_SECRET;
 
 router.post('/', async (req, res) => {
     const { user, password } = req.body;
@@ -22,7 +25,10 @@ router.post('/', async (req, res) => {
             return res.status(400).json({ msg: 'Senha incorreta' });
         }
 
-        res.json({ msg: 'Login bem-sucedido' });
+        // Gerar um token JWT
+        const token = jwt.sign({ id: foundUser._id }, JWT_SECRET, { expiresIn: '1h' });
+
+        res.json({ token });
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Erro no servidor');
