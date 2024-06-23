@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
+
 require('dotenv').config();
 
 const app = express();
@@ -26,12 +27,20 @@ const subsidiariesRouter = require('./routes/subsidiaries.route');
 const stocksRouter = require('./routes/stock.route');
 const authRouter = require('./routes/login.route');
 const registerRouter = require('./routes/register.route');
+const itemsRouter = require('./routes/items.route');
 
+app.use('/api/items', itemsRouter);
 app.use('/api/login', authRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/subsidiaries', subsidiariesRouter);
 app.use('/api/stocks', stocksRouter);
 app.use('/api/register', registerRouter);
+
+app.post('/api/add-item', (req, res) => {
+    const newItem = req.body;
+    console.log("Novo item recebido:", newItem);
+    res.status(200).json({ message: 'Item adicionado com sucesso' });
+});
 
 app.listen(port, () => {
     console.log(`Ouvindo na porta: ${port}`);

@@ -4,16 +4,35 @@ const Stock = require('../models/stock.model');
 const Item = require('../models/items.model');
 const mongoose = require("mongoose");
 
-// CRUD - Create, Read, Update, Delete
 
-// Adiciona um novo item ao estoque
-router.post("/stock", async (req, res) => {
-    const newItem = new Stock(req.body);
+// POST para adicionar item ao estoque
+router.post('/add-stock-item', async (req, res) => {
+    const { itemId, quantity } = req.body;
+
     try {
-        const savedItem = await newItem.save();
-        res.status(201).json(savedItem);
-    } catch (err) {
-        res.status(400).json({ message: err.message });
+        let stockItem = await Stock.findOne({ item: itemId });
+
+        if (!stockItem) {
+            const item = await Item.findById(itemId);
+
+            if (!item) {
+                return res.status(404).json({ message: 'Item not found' });
+            }
+
+            stockItem = new Stock({
+                item: itemId,
+                quantity: quantity
+            });
+
+            await stockItem.save();
+        } else {
+            stockItem.quantity += quantity;
+            await stockItem.save();
+        }
+
+        res.status(201).json(stockItem);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
     }
 });
 
@@ -46,13 +65,33 @@ router.delete("/stock/:id", async (req, res) => {
 // Lista todos os itens do estoque
 router.get("/stock", async (req, res) => {
     try {
-        const items = await Stock.find();
-        res.json(items);
+        const itemsInStock = await Stock.aggregate([
+            {
+                $lookup: {
+                    from: 'items',
+                    localField: 'item',
+                    foreignField: '_id',
+                    as: 'itemDetails'
+                }
+            },
+            {
+                $unwind: '$itemDetails'
+            },
+            {
+                $project: {
+                    'itemDetails.name': 1,
+                    'itemDetails.sell_price': 1,
+                    'itemDetails.buy_price': 1,
+                    'quantity': 1
+                }
+            }
+        ]);
+
+        res.json(itemsInStock);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
 });
-
 
 // Busca um item do estoque pelo ID
 router.get("/stock/:id", async (req, res) => {

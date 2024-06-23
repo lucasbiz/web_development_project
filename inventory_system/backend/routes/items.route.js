@@ -14,8 +14,8 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const item = await Item.findById(req.params.id);
-        if (item == null) {
-            return res.status(404).json({ message: 'Cannot find item' });
+        if (!item) {
+            return res.status(404).json({ message: 'Item not found' });
         }
         res.json(item);
     } catch (err) {
@@ -24,25 +24,27 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    const item = new Item({
-        name: req.body.name,
-        sell_price: req.body.sell_price,
-        buy_price: req.body.buy_price
-    });
+    const { name, sell_price, buy_price } = req.body;
 
     try {
-        const newItem = await item.save();
-        res.status(201).json(newItem);
-    } catch (err) {
-        res.status(400).json({ message: err.message });
+        const newItem = new Item({
+            name: name,
+            sell_price: sell_price,
+            buy_price: buy_price
+        });
+
+        const savedItem = await newItem.save();
+        res.status(201).json(savedItem);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
     }
 });
 
 router.patch('/:id', async (req, res) => {
     try {
         const item = await Item.findById(req.params.id);
-        if (item == null) {
-            return res.status(404).json({ message: 'Cannot find item' });
+        if (!item) {
+            return res.status(404).json({ message: 'Item not found' });
         }
 
         if (req.body.name != null) {
@@ -65,8 +67,8 @@ router.patch('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     try {
         const item = await Item.findById(req.params.id);
-        if (item == null) {
-            return res.status(404).json({ message: 'Cannot find item' });
+        if (!item) {
+            return res.status(404).json({ message: 'Item not found' });
         }
 
         await item.remove();
