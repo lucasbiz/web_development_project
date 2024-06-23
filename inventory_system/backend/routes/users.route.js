@@ -27,6 +27,7 @@ router.get('/:id', async (req, res) => {
 
 // Criar um novo usuário
 router.post('/', async (req, res) => {
+    console.log('Request Body:', req.body)
     const user = new User({
         name: req.body.name,
         email: req.body.email,
@@ -37,7 +38,8 @@ router.post('/', async (req, res) => {
         const newUser = await user.save();
         res.status(201).json(newUser);
     } catch (err) {
-        res.status(400).json({ message: err.message });
+        console.log("F");
+        res.status(400).json({ message: err.message});
     }
 });
 

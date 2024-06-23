@@ -45,3 +45,10 @@ app.post('/api/add-item', (req, res) => {
 app.listen(port, () => {
     console.log(`Ouvindo na porta: ${port}`);
 });
+
+
+
+// Teste de conexao do front com back
+app.get('/api/ping', (req, res) => {
+    res.json({ message: 'pong' });
+});
