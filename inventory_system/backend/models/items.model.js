@@ -1,26 +1,27 @@
 const mongoose = require('mongoose');
+const AutoIncrement = require ('mongoose-sequence')(mongoose)
 
-const ItemSchema = new mongoose.Schema({
+const itemSchema = new mongoose.Schema({
+    cod: {
+        type: Number
+    },
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
-    description: {
-        type: String
-    },
-    quantity: {
+    sell_price: {
         type: Number,
         required: true
     },
-    branch: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Branch',
+    buy_price: {
+        type: Number,
         required: true
-    },
-    date: {
-        type: Date,
-        default: Date.now
     }
+}, {
+    timestamps: true
 });
 
-module.exports = mongoose.model('Item', ItemSchema);
+itemSchema.plugin(AutoIncrement, { inc_field: 'cod' });
+
+module.exports = mongoose.model('Item', itemSchema);
