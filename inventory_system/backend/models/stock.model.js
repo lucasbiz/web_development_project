@@ -8,9 +8,14 @@ const StockSchema = new mongoose.Schema({
     },
     quantity: {
         type: Number,
-        required: true,
-        default: 0
+        required: true
+    },
+    date: {
+        type: Date,
+        default: Date.now
     }
+}, {
+    timestamps: true
 });
 
 module.exports = mongoose.model('Stock', StockSchema);

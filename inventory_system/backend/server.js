@@ -33,8 +33,14 @@ app.use('/api/items', itemsRouter);
 app.use('/api/login', authRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/subsidiaries', subsidiariesRouter);
-app.use('/api/stock', stocksRouter);
+app.use('/api/stocks', stocksRouter);
 app.use('/api/register', registerRouter);
+
+app.post('/api/add-item', (req, res) => {
+    const newItem = req.body;
+    console.log("Novo item recebido:", newItem);
+    res.status(200).json({ message: 'Item adicionado com sucesso' });
+});
 
 app.listen(port, () => {
     console.log(`Ouvindo na porta: ${port}`);

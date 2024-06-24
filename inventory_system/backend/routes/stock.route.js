@@ -2,42 +2,39 @@ const express = require('express');
 const router = express.Router();
 const Stock = require('../models/stock.model');
 const Item = require('../models/items.model');
+const mongoose = require("mongoose");
 
 
-router.post("/", async (req, res) => {
+// POST para adicionar item ao estoque
+router.post('/add-stock-item', async (req, res) => {
     const { itemId, quantity } = req.body;
-    try {
-        const item = await Item.findById(itemId);
-        if (!item) {
-            return res.status(404).json({ message: "Item not found" });
-        }
 
+    try {
         let stockItem = await Stock.findOne({ item: itemId });
-        if (stockItem) {
-            stockItem.quantity = quantity;
-        } else {
+
+        if (!stockItem) {
+            const item = await Item.findById(itemId);
+
+            if (!item) {
+                return res.status(404).json({ message: 'Item not found' });
+            }
+
             stockItem = new Stock({
                 item: itemId,
                 quantity: quantity
             });
+
+            await stockItem.save();
+        } else {
+            stockItem.quantity += quantity;
+            await stockItem.save();
         }
 
-        const savedStockItem = await stockItem.save();
-        res.status(201).json(savedStockItem);
-    } catch (err) {
-        res.status(400).json({ message: err.message });
+        res.status(201).json(stockItem);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
     }
 });
-
-router.get("/", async (req, res) => {
-    try {
-        const items = await Stock.find().populate('item');
-        res.json(items);
-    } catch (err) {
-        res.status(500).json({ message: err.message });
-    }
-});
-
 
 // Atualiza um item existente no estoque pelo ID
 router.patch("/stock/:id", async (req, res) => {
