@@ -24,7 +24,7 @@ export default function Page() {
         };
 
         try {
-            const response = await fetch("http://localhost:3125/api/users", {
+            const response = await fetch("http://127.0.0.1:3125/api/users", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -45,8 +45,6 @@ export default function Page() {
 
     return (
         <main className="h-screen w-screen m-0 flex items-center justify-center">
-            <img src="/detalhe1.png" className="absolute left-5 top-1/4 transform -translate-y-1/4 w-32 h-32 md:w-24 md:h-24 lg:w-32 lg:h-32 xl:w-40 xl:h-40" alt="Detalhe 1" />
-            <img src="/detalhe2.png" className="absolute right-0 bottom-1/4 transform translate-y-1/4 w-32 h-32 md:w-24 md:h-24 lg:w-32 lg:h-32 xl:w-40 xl:h-40" alt="Detalhe 2" />
             <div className="flex justify-center flex-col h-1/2 w-1/2">
                 <h1 className="text-6xl flex justify-center mb-5 text-white">Register</h1>
 

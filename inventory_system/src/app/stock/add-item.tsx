@@ -31,21 +31,21 @@ const AddItemModal: React.FC<AddItemModalProps> = ({ isOpen, onClose, onSubmit }
                     placeholder="Nome"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="block w-full p-2 mb-4 bg-gray-900 border rounded text-white placeholder-white placeholder-opacity-50"
+                    className="block w-full p-2 mb-4 bg-gray-900 border rounded"
                 />
                 <input
                     type="number"
                     placeholder="Preço de Venda"
                     value={sellPrice !== null ? sellPrice : ''}
                     onChange={(e) => setSellPrice(Number(e.target.value))}
-                    className="block w-full p-2 mb-4 bg-gray-900 border rounded text-white placeholder-white placeholder-opacity-50"
+                    className="block w-full p-2 mb-4 bg-gray-900 border rounded"
                 />
                 <input
                     type="number"
                     placeholder="Preço de Compra"
                     value={buyPrice !== null ? buyPrice : ''}
                     onChange={(e) => setBuyPrice(Number(e.target.value))}
-                    className="block w-full p-2 mb-4 bg-gray-900 border rounded text-white placeholder-white placeholder-opacity-50"
+                    className="block w-full p-2 mb-4 bg-gray-900 border rounded"
                 />
                 <div className="flex justify-end">
                     <button

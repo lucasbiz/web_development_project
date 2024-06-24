@@ -15,22 +15,3 @@ export default function Home() {
         </main>
     );
 }
-
-
-
-// teste de conexao
-const testConnection = async () => {
-    try {
-        const response = await fetch('http://localhost:3125/api/ping');
-        if (!response.ok) {
-            throw new Error('Failed to connect');
-        }
-        const data = await response.json();
-        console.log('Connection successful:', data);
-    } catch (error) {
-        console.error('Failed to connect:', error);
-    }
-};
-
-// Chame esta função para testar a conexão
-testConnection();
