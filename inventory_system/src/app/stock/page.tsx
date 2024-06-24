@@ -216,7 +216,7 @@ const Page = () => {
                 <h1 className="text-4xl mt-8 mb-8">Estoque</h1>
 
                 <div className="w-3/4">
-                    <div className="grid grid-cols-6 gap-2 text-xl font-bold mb-4">
+                    <div className="grid grid-cols-6 gap-2 text-xl font-bold mb-4 text-white placeholder-white placeholder-opacity-70">
                         <p>Código</p>
                         <p>Nome</p>
                         <p>Preço de Venda</p>
@@ -226,7 +226,7 @@ const Page = () => {
                     </div>
 
                     {stockItems.map((stock, index) => (
-                        <div key={index} className="grid grid-cols-6 gap-2 text-lg mb-2 p-2 bg-[#513F46] rounded-lg">
+                        <div key={index} className="grid grid-cols-6 gap-2 text-lg mb-2 p-2 bg-[#513F46] rounded-lg text-white placeholder-white placeholder-opacity-70">
                             <p>{stock.item.cod}</p>
                             <p>{stock.item.name}</p>
                             <p>R$ {stock.item.sell_price.toFixed(2)}</p>
