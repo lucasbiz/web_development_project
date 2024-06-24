@@ -153,7 +153,7 @@ const Page = () => {
         try {
             // Update quantities in backend
             const promises = stockItems.map(stockItem =>
-                fetch(`http://127.0.0.1:3125/api/stock/add-stock-item`, {
+                fetch(`http://localhost:3125/api/stock/add-stock-item`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

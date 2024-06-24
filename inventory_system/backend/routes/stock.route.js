@@ -23,7 +23,6 @@ router.post('/add-stock-item', async (req, res) => {
                 item: itemId,
                 quantity: quantity
             });
-
             await stockItem.save();
         } else {
             stockItem.quantity += quantity;
