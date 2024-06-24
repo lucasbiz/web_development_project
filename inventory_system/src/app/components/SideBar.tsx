@@ -21,7 +21,7 @@ const SideBar = () => {
                     <li><SidebarItem href="/dashboard" icon="/home.png" /></li>
                 
                     <li><SidebarItem href="/subsidiaries" icon="/location.png"/></li>
-                    <li><SidebarItem href="/dashboardSubsidiary" icon="/location.png"/></li>
+                    <li><SidebarItem href="/dashboardSubsidiary" icon="/subs_dash.png"/></li>
 
                     <li><SidebarItem href="/account" icon="/user.png"/></li>
                     <li><SidebarItem href="/stock" icon="/estoque.png"/></li>
