@@ -94,14 +94,14 @@ router.get("/stock", async (req, res) => {
 });
 
 // Busca um item do estoque pelo ID
-router.get("/stock/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
     try {
         const id = req.params.id; // Acessa o ID do item a partir do parâmetro de rota
-        const item = await Stock.findById(id); // Busca o item no banco de dados pelo ID
-        if (!item) {
-            return res.status(404).json({ message: "Item not found" });
+        const stockItem = await Stock.findOne({ item: id }); // Busca o item no estoque pelo ID do item
+        if (!stockItem) {
+            return res.status(404).json({ message: "Item not found in stock" });
         }
-        res.json(item); // Retorna os detalhes do item como resposta
+        res.json(stockItem); // Retorna os detalhes do item no estoque como resposta
     } catch (err) {
         res.status(500).json({ message: err.message });
     }

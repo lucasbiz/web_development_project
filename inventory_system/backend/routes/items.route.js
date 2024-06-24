@@ -72,17 +72,18 @@ router.patch('/:id', async (req, res) => {
 // Rota para deletar um item específico pelo ID
 router.delete('/:id', async (req, res) => {
     try {
-        const item = await Item.findById(req.params.id); // Busca um item pelo ID
+        const item = await Item.findOne({_id: req.params.id});
         if (!item) {
-            return res.status(404).json({ message: 'Item not found' }); // Retorna um erro 404 se o item não for encontrado
+            return res.status(404).json({ message: 'Item not found' });
         }
 
-        await item.remove(); // Remove o item do banco de dados
-        res.json({ message: 'Item deleted' }); // Retorna uma mensagem de sucesso
+        await item.deleteOne();
+        res.json({ message: 'Item deleted' });
     } catch (err) {
-        res.status(500).json({ message: err.message }); // Retorna um erro 500 se algo der errado
+        console.error(err.message);
+        res.status(500).json({ message: 'Failed to delete item' });
     }
 });
 
-module.exports = router; // Exporta o roteador para ser usado em outros arquivos
+module.exports = router;
 

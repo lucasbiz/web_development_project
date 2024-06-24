@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import SideBar from "../components/SideBar";
 import Link from "next/link";
 import AddItemModal from "./add-item";
+import {Simulate} from "react-dom/test-utils";
+import waiting = Simulate.waiting;
 
 interface Item {
     _id: string;
@@ -25,7 +27,6 @@ const Page = () => {
     const [isAddItemModalOpen, setIsAddItemModalOpen] = useState(false);
 
     useEffect(() => {
-        // Fetch items from backend
         const fetchItems = async () => {
             try {
                 const response = await fetch("http://127.0.0.1:3125/api/items");
@@ -33,21 +34,41 @@ const Page = () => {
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
                 const data: Item[] = await response.json();
-                // Initialize stock items with quantity 0 for each item
-                const stockItemsWithZeroQuantity = data.map(item => ({
-                    _id: item._id,
-                    item: item,
-                    quantity: 0
-                }));
+
+                const stockItemsWithQuantities = await Promise.all(
+                    data.map(async item => {
+                        try {
+                            const response = await fetch(`http://127.0.0.1:3125/api/stock/${item._id}`);
+                            if (!response.ok) {
+                                throw new Error(`Falha ao buscar a quantidade do item ${item._id}`);
+                            }
+                            const { quantity } = await response.json();
+                            return {
+                                _id: item._id,
+                                item: item,
+                                quantity: quantity
+                            };
+                        } catch (error) {
+                            console.error(`Falha ao buscar a quantidade do item ${item._id}`, error);
+                            return {
+                                _id: item._id,
+                                item: item,
+                                quantity: 0
+                            };
+                        }
+                    })
+                );
+
                 setItems(data);
-                setStockItems(stockItemsWithZeroQuantity);
+                setStockItems(stockItemsWithQuantities);
             } catch (error) {
-                console.error("Falha ao dar fetch nos itens:", error);
+                console.error("Falha ao buscar itens e quantidades:", error);
             }
         };
 
         fetchItems();
     }, []);
+
 
     const handleQuantityChange = (itemId: string, quantity: number) => {
         // Update quantity in local state
@@ -100,6 +121,26 @@ const Page = () => {
             console.error("Falha ao adicionar um item:", error);
         }
     };
+    const handleDeleteItem = async (itemId: string) => {
+        try {
+            const response = await fetch(`http://127.0.0.1:3125/api/items/${itemId}`, {
+                method: 'DELETE',
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to delete item! Status: ${response.status}`);
+            }
+
+            const updatedStockItems = stockItems.filter(stockItem => stockItem.item._id !== itemId);
+            setStockItems(updatedStockItems);
+
+            console.log('Item deletado com sucesso!');
+        } catch (error) {
+            console.error('Failed to delete item:', error);
+            alert('Falha ao deletar item. Tente novamente.');
+        }
+    };
+
 
     return (
         <main className="h-screen w-screen m-0 flex">
@@ -126,31 +167,35 @@ const Page = () => {
 
                 <h1 className="text-4xl mt-8 mb-8">Estoque</h1>
 
-                <div className="w-3/4">
-                    <div className="grid grid-cols-6 gap-2 text-xl font-bold mb-4">
+                <div className="w-5/6">
+                    <div className="grid grid-cols-7 gap-1 text-lg font-bold mb-4">
                         <p>Código</p>
                         <p>Nome</p>
                         <p>Preço de Venda</p>
                         <p>Preço de Compra</p>
-                        <p>Quantidade</p>
                         <p>Preço Total</p>
+                        <p>Em estoque</p>
+                        <p>Atualizar</p>
                     </div>
 
                     {stockItems.map((stock, index) => (
-                        <div key={index} className="grid grid-cols-6 gap-2 text-lg mb-2 p-2 bg-[#513F46] rounded-lg">
+                        <div key={index} className="grid grid-cols-7 gap-2 text-lg mb-2 p-2 bg-[#513F46] rounded-lg">
                             <p>{stock.item.cod}</p>
                             <p>{stock.item.name}</p>
                             <p>R$ {stock.item.sell_price.toFixed(2)}</p>
                             <p>R$ {stock.item.buy_price.toFixed(2)}</p>
+                            <p>R$ {(stock.item.sell_price * stock.quantity).toFixed(2)}</p>
+                            <p>{stock.quantity}</p>
                             <input
                                 type="number"
                                 value={stock.quantity}
                                 onChange={(e) => handleQuantityChange(stock.item._id, Number(e.target.value))}
                                 className="h-10 w-20 text-center bg-gray-900 rounded-md"
                             />
-                            <p>R$ {(stock.item.sell_price * stock.quantity).toFixed(2)}</p>
+                            <button onClick={() => handleDeleteItem(stock.item._id)}>🗑️</button>
                         </div>
                     ))}
+
                 </div>
             </div>
             <AddItemModal
