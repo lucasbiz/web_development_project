@@ -127,13 +127,14 @@ const Page = () => {
                 <h1 className="text-4xl mt-8 mb-8">Estoque</h1>
 
                 <div className="w-3/4">
-                    <div className="grid grid-cols-6 gap-2 text-xl font-bold mb-4">
+                    <div className="grid grid-cols-7 gap-2 text-xl font-bold mb-4">
                         <p>Código</p>
                         <p>Nome</p>
                         <p>Preço de Venda</p>
                         <p>Preço de Compra</p>
-                        <p>Quantidade</p>
                         <p>Preço Total</p>
+                        <p><Em estoque</p>
+                        <p><Adicionar</p>
                     </div>
 
                     {stockItems.map((stock, index) => (
@@ -142,13 +143,14 @@ const Page = () => {
                             <p>{stock.item.name}</p>
                             <p>R$ {stock.item.sell_price.toFixed(2)}</p>
                             <p>R$ {stock.item.buy_price.toFixed(2)}</p>
+                            <p>R$ {(stock.item.sell_price * stock.quantity).toFixed(2)}</p>
+                            <p>{stock.quantity}</p>
                             <input
                                 type="number"
                                 value={stock.quantity}
                                 onChange={(e) => handleQuantityChange(stock.item._id, Number(e.target.value))}
                                 className="h-10 w-20 text-center bg-gray-900 rounded-md"
                             />
-                            <p>R$ {(stock.item.sell_price * stock.quantity).toFixed(2)}</p>
                         </div>
                     ))}
                 </div>
