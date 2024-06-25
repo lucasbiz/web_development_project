@@ -1,92 +1,3 @@
-/*"use client";
-
-import { useEffect, useState } from "react";
-import SideBar from "../components/SideBar";
-import Link from "next/link";
-
-interface StockItem {
-    item: {
-        _id: string;
-        name: string;
-        sell_price: number;
-        buy_price: number;
-    };
-    quantity: number;
-}
-
-const Page = () => {
-    const [stockItems, setStockItems] = useState<StockItem[]>([]);
-
-    useEffect(() => {
-        const fetchStockItems = async () => {
-            try {
-                const response = await fetch("http://127.0.0.1:3125/api/stocks");
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                const data: StockItem[] = await response.json();
-                setStockItems(data);
-            } catch (error) {
-                console.error("Failed to fetch stock items:", error);
-            }
-        };
-
-        fetchStockItems();
-    }, []);
-
-    return (
-        <main className="h-screen w-screen m-0 flex">
-            <SideBar />
-            <div className="h-full w-full flex flex-col items-center ml-52">
-                <div className="flex justify-end w-full mt-8 mr-8">
-                    <div>
-                        <Link href="/stock/add-item">
-                            <button
-                                className="p-3 bg-[#40B797] rounded-xl hover:bg-[#40b797b0] text-2xl text-white">
-                                Novo Item
-                            </button>
-                        </Link>
-                    </div>
-                    <div className="ml-4"><Link href="/stock/add-stock-item">
-                        <button className="p-3 bg-[#40B797] rounded-xl hover:bg-[#40b797b0] text-2xl text-white">
-                            Alterar Quantidade
-                        </button>
-                    </Link>
-                    </div>
-                </div>
-
-                <h1 className="text-4xl mt-8 mb-8">Estoque</h1>
-
-                <div className="w-3/4">
-                    <div className="grid grid-cols-6 gap-2 text-xl font-bold mb-4">
-                        <p>Código</p>
-                        <p>Nome</p>
-                        <p>Preço de Venda</p>
-                        <p>Preço de Compra</p>
-                        <p>Quantidade</p>
-                        <p>Preço Total</p>
-                    </div>
-
-                    {stockItems.map((stock, index) => (
-                        <div key={index} className="grid grid-cols-6 gap-2 text-lg mb-2 p-2 bg-slate-100 rounded-lg">
-                            <p>{stock.item._id}</p>
-                            <p>{stock.item.name}</p>
-                            <p>R$ {stock.item.sell_price.toFixed(2)}</p>
-                            <p>R$ {stock.item.buy_price.toFixed(2)}</p>
-                            <p>{stock.quantity}</p>
-                            <p>R$ {(stock.item.sell_price * stock.quantity).toFixed(2)}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </main>
-    );
-};
-
-export default Page;
-
-*/
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -153,7 +64,7 @@ const Page = () => {
         try {
             // Update quantities in backend
             const promises = stockItems.map(stockItem =>
-                fetch(`http://localhost:3125/api/stock/add-stock-item`, {
+                fetch(`http://127.0.0.1:3125/api/stock`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -216,7 +127,7 @@ const Page = () => {
                 <h1 className="text-4xl mt-8 mb-8">Estoque</h1>
 
                 <div className="w-3/4">
-                    <div className="grid grid-cols-6 gap-2 text-xl font-bold mb-4 text-white placeholder-white placeholder-opacity-70">
+                    <div className="grid grid-cols-6 gap-2 text-xl font-bold mb-4">
                         <p>Código</p>
                         <p>Nome</p>
                         <p>Preço de Venda</p>
@@ -226,7 +137,7 @@ const Page = () => {
                     </div>
 
                     {stockItems.map((stock, index) => (
-                        <div key={index} className="grid grid-cols-6 gap-2 text-lg mb-2 p-2 bg-[#513F46] rounded-lg text-white placeholder-white placeholder-opacity-70">
+                        <div key={index} className="grid grid-cols-6 gap-2 text-lg mb-2 p-2 bg-[#513F46] rounded-lg">
                             <p>{stock.item.cod}</p>
                             <p>{stock.item.name}</p>
                             <p>R$ {stock.item.sell_price.toFixed(2)}</p>

@@ -9,8 +9,6 @@ export default function Page() {
     const [location, setLocation] = useState("");
     const [subsidiaries, setSubsidiaries] = useState([
         { name: "Loja 1", location: "Florianópolis" },
-        { name: "Loja 2", location: "São Paulo" },
-        { name: "Loja 3", location: "Fortaleza" }
     ]);
 
     const handleAddSubsidiary = () => {
@@ -26,14 +24,8 @@ export default function Page() {
             <SideBar />
 
             <div className="ml-64 p-8 w-full">
-                <input
-                    type="text"
-                    className="text-black p-2 px-4 mt-16 mb-10 rounded-2xl bg-slate-100 w-3/4 h-14 text-3xl"
-                    placeholder="Pesquisar..."
-                />
-
                 <div className="bg-[#513F46] p-6 rounded-2xl shadow-md mb-10">
-                    <h2 className="text-3xl mb-4">Adicionar Nova Filial</h2>
+                    <h2 className="text-3xl mb-4 text-white">Adicionar Nova Filial</h2>
                     <input
                         type="text"
                         className="bg-[#9B9B9B] text-black p-2 px-4 mb-4 rounded-2xl bg-slate-100 w-full h-14 text-2xl"
@@ -57,10 +49,10 @@ export default function Page() {
                 </div>
 
                 <div className="bg-[#513F46] p-6 rounded-2xl shadow-md">
-                    <h2 className="text-3xl mb-4">Lista de Filiais</h2>
+                    <h2 className="text-3xl mb-4 text-white">Lista de Filiais</h2>
                     <div className="flex flex-row justify-between mb-4">
-                        <p className="text-xl font-semibold">Nome</p>
-                        <p className="text-xl font-semibold">Localização</p>
+                        <p className="text-xl font-semibold text-center w-1/2 text-white">Nome</p>
+                        <p className="text-xl font-semibold text-center w-1/2 text-white">Localização</p>
                     </div>
                     {subsidiaries.map((subsidiary, index) => (
                         <SubsidiariesCard

@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 
 
 // POST para adicionar item ao estoque
-router.post('/add-stock-item', async (req, res) => {
+router.post('/', async (req, res) => {
     const { itemId, quantity } = req.body;
 
     try {
@@ -23,6 +23,7 @@ router.post('/add-stock-item', async (req, res) => {
                 item: itemId,
                 quantity: quantity
             });
+
             await stockItem.save();
         } else {
             stockItem.quantity += quantity;
@@ -36,7 +37,7 @@ router.post('/add-stock-item', async (req, res) => {
 });
 
 // Atualiza um item existente no estoque pelo ID
-router.patch("/stock/:id", async (req, res) => {
+router.patch("/:id", async (req, res) => {
     try {
         const updatedItem = await Stock.findByIdAndUpdate(req.params.id, req.body, { new: true });
         if (!updatedItem) {
@@ -49,7 +50,7 @@ router.patch("/stock/:id", async (req, res) => {
 });
 
 // Remove um item do estoque pelo ID
-router.delete("/stock/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
     try {
         const item = await Stock.findByIdAndDelete(req.params.id);
         if (!item) {
