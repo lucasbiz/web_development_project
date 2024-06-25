@@ -1,4 +1,4 @@
-"use client"
+ddItemM"use client"
 
 import Link from "next/link";
 import ItemCard from "../components/ItemCard";
@@ -7,12 +7,19 @@ import PieChart from "../components/PieChart";
 import SearchBar from "../components/SearchBar";
 import { useState, useEffect } from "react";
 
-export interface Item {
+interface Item {
+    _id: string;
+    cod: number;
     name: string;
     sell_price: number;
     buy_price: number;
+}
+
+interface StockItem {
+    _id: string;
+    item: Item;
     quantity: number;
-  }
+}
   
 // const items= [
 //     // {
@@ -60,9 +67,10 @@ export interface Item {
 // ]
 
 
-export default function Page() {
+const Page = () => {
   // Define o estado 'items' para armazenar os itens e 'setItems' para atualizar o estado
   const [items, setItems] = useState<Item[]>([]);
+  const [stockItems, setStockItems] = useState<StockItem[]>([]);
   // Define o estado 'searchQuery' para armazenar a consulta de pesquisa e 'setSearchQuery' para atualizar o estado
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -74,9 +82,15 @@ export default function Page() {
               // Faz uma requisição HTTP GET para a URL do backend
               const response = await fetch('http://localhost:3125/api/items');
               // Converte a resposta em JSON
-              const data = await response.json();
+              const data Item[] = await response.json();
+              const stockItemWithZeroQuantity = data.map(item =>({
+                  _id: item._id,
+                  item: item,
+                  quantity: 0
+              }));
               // Atualiza o estado 'items' com os dados recebidos
               setItems(data);
+              setStockItems(stockItemWithZeroQuantity);
           } catch (error) {
               // Exibe uma mensagem de erro no console se a requisição falhar
               console.error('Erro ao buscar itens:', error);
@@ -94,9 +108,9 @@ export default function Page() {
   );
 
   // Mapeia os itens filtrados para um array de nomes
-  const itemNames = filteredItems.map(item => item.name);
+  const itemNames = filteredItems.map(item => stock.item.name);
   // Mapeia os itens filtrados para um array de quantidades
-  const itemQuantity = filteredItems.map(item => item.quantity);
+  const itemQuantity = filteredItems.map(item => stock.item.quantity);
 
   console.log('itemNames:', itemNames);
   console.log('itemQuantity:', itemQuantity);
@@ -168,7 +182,7 @@ export default function Page() {
                         
                         {filteredItems.map((item) => {
                             return (
-                                <ItemCard name={item.name} quantity={item.quantity} sellPrice={item.sell_price} buyPrice={item.buy_price}></ItemCard>
+                                <ItemCard name={stock.item.name} quantity={stock.quantity} sellPrice={stock.item.sell_price} buyPrice={stock.item.buy_price}></ItemCard>
                             );
                         })}
                         
