@@ -133,8 +133,8 @@ const Page = () => {
                         <p>Preço de Venda</p>
                         <p>Preço de Compra</p>
                         <p>Preço Total</p>
-                        <p><Em estoque</p>
-                        <p><Adicionar</p>
+                        <p>Estoque</p>
+                        <p>Adicionar</p>
                     </div>
 
                     {stockItems.map((stock, index) => (
