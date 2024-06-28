@@ -32,6 +32,7 @@ export default function Page() {
                         placeholder="Nome da Filial"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
+                        maxLength={15}
                     />
                     <input
                         type="text"
@@ -39,6 +40,7 @@ export default function Page() {
                         placeholder="Localização"
                         value={location}
                         onChange={(e) => setLocation(e.target.value)}
+                        maxLength={15}
                     />
                     <button
                         className="bg-blue-500 text-white p-2 px-4 rounded-2xl w-full h-14 text-2xl"
