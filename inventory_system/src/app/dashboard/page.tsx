@@ -14,56 +14,11 @@ export interface Item {
     buy_price: number;
   }
 
-// const items= [
-//     // {
-//     //   name: "Banana",
-//     //   sell_price: 1.2,
-//     //   buy_price: 1,
-//     //   quantity: 30,
-//     // },
-//     // {
-//     //   name: "Abacaxi",
-//     //   sell_price: 1.2,
-//     //   buy_price: 1,
-//     //   quantity: 20,
-//     // },
-//     // {
-//     //   name: "Maçã",
-//     //   sell_price: 1.2,
-//     //   buy_price: 1,
-//     //   quantity: 13,
-//     // },
-//     // {
-//     //     name: "Caju",
-//     //     sell_price: 1.2,
-//     //     buy_price: 1,
-//     //     quantity: 24,
-//     //   },
-//     // {
-//     //     name: "Manga",
-//     //     sell_price: 1.2,
-//     //     buy_price: 1,
-//     //     quantity: 35,
-//     //   },
-//     // {
-//     //     name: "Pêra",
-//     //     sell_price: 1.2,
-//     //     buy_price: 1,
-//     //     quantity: 48,
-//     // },
-//     // {
-//     //     name: "Maracuja",
-//     //     sell_price: 1.2,
-//     //     buy_price: 1,
-//     //     quantity: 5,
-//     // },
-// ]
-
 
 export default function Page() {
-  // Define o estado 'items' para armazenar os itens e 'setItems' para atualizar o estado
+   // Define o estado 'items' para armazenar os itens e 'setItems' para atualizar o estado
   const [items, setItems] = useState<Item[]>([]);
-  // Define o estado 'searchQuery' para armazenar a consulta de pesquisa e 'setSearchQuery' para atualizar o estado
+  //  Define o estado 'searchQuery' para armazenar a consulta de pesquisa e 'setSearchQuery' para atualizar o estado
   const [searchQuery, setSearchQuery] = useState('');
 
   // useEffect para buscar itens do backend quando o componente é montado
@@ -96,7 +51,7 @@ export default function Page() {
   // Mapeia os itens filtrados para um array de nomes
   const itemNames = filteredItems.map(item => item.name);
   // Mapeia os itens filtrados para um array de quantidades
-  const itemQuantity = filteredItems.map(item => item.quantity);
+  const itemQuantity = filteredItems.map(item => item.sell_price);
 
   console.log('itemNames:', itemNames);
   console.log('itemQuantity:', itemQuantity);
@@ -168,7 +123,7 @@ export default function Page() {
 
                         {filteredItems.map((item) => {
                             return (
-                                <ItemCard name={item.name} quantity={item.quantity} sellPrice={item.sell_price} buyPrice={item.buy_price}></ItemCard>
+                                <ItemCard name={item.name} quantity={0} sellPrice={item.sell_price} buyPrice={item.buy_price}></ItemCard>
                             );
                         })}
 
