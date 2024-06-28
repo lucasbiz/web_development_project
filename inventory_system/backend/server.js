@@ -15,7 +15,13 @@ app.use(express.json());
 main().catch(err => console.log(err));
 
 async function main() {
-    await mongoose.connect('mongodb://localhost:27017/inventory_system');
+    mongoose.connect('mongodb://0.0.0.0:27017/')
+    .then(() => {
+      console.log('Conexão com MongoDB estabelecida com sucesso');
+    })
+    .catch(err => {
+      console.error('Erro ao conectar com MongoDB', err);
+    });
 }
 mongoose.connection.on('open', () => {
     console.log('Conectado a Base de Dados');
