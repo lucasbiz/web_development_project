@@ -113,12 +113,12 @@ export default function Page() {
                 <div className="bg-[#2F2428] w-1/2 h-full flex justify-center items-center">
 
                     <div className="bg-[#513F46] rounded-2xl h-5/6 w-5/6 flex flex-col items-center overflow-y-auto">
-                        <h2 className="m-3 text-3xl">Itens in stock</h2>
+                        <h2 className="m-3 text-3xl">Itens em estoque</h2>
                         <div className="flex flex-row  w-full justify-start text-xl">
-                          <p className="ml-20">Name</p>
-                          <p className="ml-32">Quantity</p>
-                          <p className="ml-4">Sell Price</p>
-                          <p className="ml-4">Buy Price</p>
+                          <p className="ml-20">Nome</p>
+                          <p className="ml-32">Quant</p>
+                          <p className="ml-10">P/venda</p>
+                          <p className="ml-5">P/compra</p>
                         </div>
 
                         {filteredItems.map((item) => {
