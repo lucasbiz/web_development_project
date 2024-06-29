@@ -6,6 +6,7 @@ import Link from "next/link";
 import AddItemModal from "./add-item";
 import {Simulate} from "react-dom/test-utils";
 import waiting = Simulate.waiting;
+import SelectSubisidiarie from "../components/SelectSubsidiarie";
 
 interface Item {
     _id: string;
@@ -25,6 +26,8 @@ const Page = () => {
     const [items, setItems] = useState<Item[]>([]);
     const [stockItems, setStockItems] = useState<StockItem[]>([]);
     const [isAddItemModalOpen, setIsAddItemModalOpen] = useState(false);
+    const [selectedSubisidiary, setSelectedSubisidiary] = useState<string>("");
+
 
     useEffect(() => {
         const fetchItems = async () => {
@@ -141,29 +144,41 @@ const Page = () => {
         }
     };
 
+    const subisidiaries = ["filial 1", "filial 2"]
+
+    const handleSelectSubisidiarie = (subsidiary: string) => {
+        setSelectedSubisidiary(subsidiary);
+      };
+
 
     return (
         <main className="h-screen w-screen m-0 flex">
             <SideBar />
             <div className="h-full w-full flex flex-col items-center ml-52">
-                <div className="flex justify-end w-full mt-8 mr-8">
-                    <div>
-                        <button
-                            onClick={() => setIsAddItemModalOpen(true)}
-                            className="p-3 bg-[#40B797] rounded-xl hover:bg-[#40b797b0] text-2xl text-white"
-                        >
-                            Novo Item
-                        </button>
+                <div className="flex flex-row w-full">
+                    <div className="flex justify-start ml-10 mt-12 w-full ">
+                            <SelectSubisidiarie  subisidiaries={subisidiaries} onSelectsubisidiary={handleSelectSubisidiarie}></SelectSubisidiarie>
                     </div>
-                    <div className="ml-4">
-                        <button
-                            onClick={handleSaveQuantities}
-                            className="p-3 bg-[#40B797] rounded-xl hover:bg-[#40b797b0] text-2xl text-white"
-                        >
-                            Salvar Quantidades
-                        </button>
+                    <div className="flex justify-end w-full mt-8 mr-8 ">
+                        <div>
+                            <button
+                                onClick={() => setIsAddItemModalOpen(true)}
+                                className="p-3 bg-[#40B797] rounded-xl hover:bg-[#40b797b0] text-2xl text-white"
+                            >
+                                Novo Item
+                            </button>
+                        </div>
+                        <div className="ml-4">
+                            <button
+                                onClick={handleSaveQuantities}
+                                className="p-3 bg-[#40B797] rounded-xl hover:bg-[#40b797b0] text-2xl text-white"
+                            >
+                                Salvar Quantidades
+                            </button>
+                        </div>
                     </div>
                 </div>
+                
 
                 <h1 className="text-4xl mt-8 mb-8">Estoque</h1>
 
