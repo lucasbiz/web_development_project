@@ -34,11 +34,20 @@ router.get('/:id', async (req, res) => {
 
 // Rota POST para criar uma nova subsidiária
 router.post('/', async (req, res) => {
+    console.log('Request body:', req.body); 
+
+
+    const { name, location, stock } = req.body;
+
+    if (!name || !location || !stock) {
+        return res.status(400).json({ error: 'Missing required fields' });
+      }
+    
     // Cria uma nova instância do modelo Subsidiaries com os dados fornecidos
     const subsidiary = new Subsidiaries({
-        name: req.body.name,
-        location: req.body.location,
-        stock: req.body.stock
+        name: name,
+        location: location,
+        stock: stock
     });
     try {
         // Salva a nova subsidiária no banco de dados

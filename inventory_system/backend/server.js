@@ -14,6 +14,7 @@ const port = process.env.PORT || 3125;
 app.use(cors());
 // Adiciona middleware para analisar o corpo das requisições como JSON
 app.use(express.json());
+app.use(bodyParser.json()); 
 
 // Função principal que conecta ao MongoDB
 main().catch(err => console.log(err));
