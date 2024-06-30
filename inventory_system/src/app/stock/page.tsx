@@ -6,7 +6,7 @@ import Link from "next/link";
 import AddItemModal from "./add-item";
 import {Simulate} from "react-dom/test-utils";
 import waiting = Simulate.waiting;
-import SelectSubisidiarie from "../components/SelectSubsidiarie";
+import SelectSubisidiarie from "../components/SelectSubsidiary";
 
 interface Item {
     _id: string;

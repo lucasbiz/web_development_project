@@ -30,9 +30,8 @@ const SideBar = () => {
           <ul className="w-3/4 flex flex-col justify-center items-center mt-11">
             <li><SidebarItem href="/dashboard" icon="/home.png" /></li>
             <li><SidebarItem href="/subsidiaries" icon="/location.png" /></li>
-            <li><SidebarItem href="/dashboardSubsidiary" icon="/subs_dash.png" /></li>
-            <li><SidebarItem href="/account" icon="/user.png" /></li>
             <li><SidebarItem href="/stock" icon="/estoque.png" /></li>
+            <li><SidebarItem href="/account" icon="/user.png" /></li>
           </ul>
         </div>
       </aside>

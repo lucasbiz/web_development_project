@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-interface SelectSubisidiarieProps {
+interface SelectSubisidiaryProps {
   subisidiaries: string[];
   onSelectsubisidiary: (subisidiary: string) => void;
 }
 
-const SelectSubisidiarie: React.FC<SelectSubisidiarieProps> = ({ subisidiaries, onSelectsubisidiary }) => {
+const SelectSubisidiary: React.FC<SelectSubisidiaryProps> = ({ subisidiaries, onSelectsubisidiary }) => {
   const [selectedsubisidiary, setSelectedsubisidiary] = useState<string>("");
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -34,4 +34,4 @@ const SelectSubisidiarie: React.FC<SelectSubisidiarieProps> = ({ subisidiaries, 
   );
 };
 
-export default SelectSubisidiarie;
+export default SelectSubisidiary;
