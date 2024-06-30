@@ -65,7 +65,7 @@ const Page = () => {
         </button>
         <button
           onClick={accountLogOut}
-          className="bg-white rounded-2xl p-3 my-10 text-3xl hover:bg-[#CC8B24] transition duration-500 ease-in-out"
+          className="bg-[#EB9F27] rounded-2xl p-3 my-10 text-3xl hover:bg-[#CC8B24] transition duration-500 ease-in-out"
         >
           Sair
         </button>
