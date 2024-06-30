@@ -6,6 +6,7 @@ import SideBar from "../components/SideBar";
 import PieChart from "../components/PieChart";
 import SearchBar from "../components/SearchBar";
 import { useState, useEffect } from "react";
+import SelectSubisidiary from "../components/SelectSubsidiary";
 
 export interface Item {
     cod: string
@@ -20,6 +21,8 @@ export default function Page() {
   const [items, setItems] = useState<Item[]>([]);
   //  Define o estado 'searchQuery' para armazenar a consulta de pesquisa e 'setSearchQuery' para atualizar o estado
   const [searchQuery, setSearchQuery] = useState('');
+  // Aqui define se vai pegar os dados gerais ou de uma filial especifica
+  const [selectedSubisidiary, setSelectedSubisidiary] = useState<string>("");
 
   // useEffect para buscar itens do backend quando o componente é montado
   useEffect(() => {
@@ -61,6 +64,10 @@ export default function Page() {
       setSearchQuery(query);
   };
 
+  const handleSelectSubisidiarie = (subsidiary: string) => {
+    setSelectedSubisidiary(subsidiary);
+  };
+
     // dados pro grafico
     const data = {
         labels: itemNames,
@@ -92,15 +99,20 @@ export default function Page() {
         };
 
 
+        const subisidiaries = ["Geral", "filial 1", "filial 2"]
+
 
     return(
 
         <main className="h-screen w-screen m-0 flex flex-col">
             <SideBar></SideBar>
 
-            <div className=" h-24 w-auto  ">
+            <div className=" h-24 w-auto flex flex-row ">
               <div className="md:ml-72 ml-28 mt-14">
                 <SearchBar onSearch={handleSearch}/>
+              </div>
+              <div className="mt-14">
+                <SelectSubisidiary subisidiaries={subisidiaries} onSelectsubisidiary={handleSelectSubisidiarie}></SelectSubisidiary>
               </div>
             </div>
 

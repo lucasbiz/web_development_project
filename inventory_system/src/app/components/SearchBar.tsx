@@ -31,14 +31,14 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
         value={query}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
-        placeholder="Search here"
+        placeholder="Procure aqui"
         className="border rounded-xl px-4 py-2 w-1/3 h-10 text-black -mr-20 outline-none min-w-72 max-w-96"
       />
       <button
         onClick={handleSearch}
         className="bg-[#40B797] active:bg-[#359A7F] outline-none text-white px-4 py-2 rounded-r h-10"
       >
-        Search
+        Procurar
       </button>
     </div>
   );

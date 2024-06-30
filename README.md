@@ -1,15 +1,14 @@
 <h1>Projeto de Desenvolvimento Web</h1>
-<h2>Sistema de Gestão de Estoque Doméstico</h2>
+<h2>Sistema de Gestão de Estoque para empresas com varias filiais</h2>
 
-Este projeto consiste em um sistema de gestão de estoque pessoal, projetado para residências grandes ou repúblicas onde múltiplas pessoas compartilham mercadorias de limpeza, alimentos, legumes, frutas e outros itens de compras em geral. A aplicação servirá para monitorar de maneira interativa estoque da despensa e da geladeira.
+Este projeto consiste em um sistema de gestão de estoque geral de uma empresa, onde cada filial tem o seu estoque proprio. Os usuarios compartilham o acesso aos estoques.
 
 
 <h3>Recursos Principais</h3>
 
-- Controle de Estoque: Registre e acompanhe todos os itens armazenados na despensa e na geladeira, incluindo alimentos perecíveis e não perecíveis, produtos de limpeza, etc.<br>
-Gerenciamento de Usuários: Permitindo uma divisão clara de responsabilidades e facilitando a comunicação entre os membros.
-- Alertas de Vencimento: Receba notificações sobre produtos próximos da data de validade, ajudando a evitar desperdícios e garantindo que os itens sejam consumidos a tempo.<br>
-- Lista de Compras Integrada: Mantenha uma lista atualizada de itens que precisam ser comprados, permitindo que os usuários adicionem facilmente novos produtos quando necessário.<br>
+- Controle de Estoque: Registre e acompanhe todos os itens armazenados no estoque, com graficos auxiliares.
+- Gerenciamento de Usuários: Criacão e modificação dos usuarios, sem fazer login o acesso é restrito.
+- Estoque Integrado: Mantenha uma lista atualizada dos itens no inventario, permitindo que os usuários adicionem facilmente novos produtos quando necessário.
 - Visualização Intuitiva: Interface amigável e intuitiva para facilitar a navegação e o uso.<br>
 
 
@@ -18,11 +17,11 @@ Gerenciamento de Usuários: Permitindo uma divisão clara de responsabilidades e
 O sistema é construído utilizando a Stack MERN, que inclui:
 - MongoDB NoSQL (Banco de Dados)
 - Express.js (Framework para Back-End)
-- React (Interface/Front-End)
+- React e Next.js (Interface/Front-End)
 - Node.js(Back-end)
 
 
-<h3>Autor(es)</h3>
+<h3>Autores</h3>
 
 - Danrley Ribeiro
 - Eduardo Boçon
