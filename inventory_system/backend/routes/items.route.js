@@ -85,5 +85,6 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
+// Exporta o modulo para que possa ser usado em outras partes da aplicação
 module.exports = router;
 

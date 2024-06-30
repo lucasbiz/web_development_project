@@ -35,4 +35,5 @@ router.post('/', async (req, res) => {
     }
 });
 
+// Exporta o modulo para que possa ser usado em outras partes da aplicação
 module.exports = router;
