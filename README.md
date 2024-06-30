@@ -31,4 +31,4 @@ O sistema é construído utilizando a Stack MERN, que inclui:
 
 <h2>Explicando cada tela</h2>
 <h3>Tela de login</h3>
-![Alt text](/readme_images/login.jpg)
+![Alt text](readme_images/login.jpg)
