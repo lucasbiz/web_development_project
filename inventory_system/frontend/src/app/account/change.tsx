@@ -12,11 +12,34 @@ const Change = ({ onClose }: ChangeProps) => {
 
   const isSubmitDisabled = newName.length <= 5 || newPassword.length <= 5;
 
-  const handleSubmit = () => {
-    // Lógica para enviar os dados ao backend
-    console.log("Nome:", newName, "Senha:", newPassword);
+  const handleSubmit = async () => {
+    const data = {
+        user: newName,
+        password: newPassword
+    };
+
+    try {
+        const response = await fetch("http://127.0.0.1:3125/api/x", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            const responseData = await response.json();
+            console.log("Dados alterados com sucesso!")
+            window.alert("Dados alterados com sucesso!")
+
+        } else {
+            console.error("Erro ao alterar o cadastro!");
+        }
+    } catch (error) {
+        console.error("An error occurred:", error);
+    }
     onClose();
-  };
+};
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
