@@ -152,38 +152,42 @@ const Page = () => {
 
 
     return (
-        <main className="h-screen w-screen m-0 flex">
+        <main className="h-screen w-screen m-0 flex flex-col">
             <SideBar />
-            <div className="h-full w-full flex flex-col items-center ml-52">
-                <div className="flex flex-row w-full">
-                    <div className="flex justify-start ml-10 mt-12 w-full ">
-                            <SelectSubisidiarie  subisidiaries={subisidiaries} onSelectsubisidiary={handleSelectSubisidiarie}></SelectSubisidiarie>
-                    </div>
-                    <div className="flex justify-end w-full mt-8 mr-8 ">
-                        <div>
-                            <button
-                                onClick={() => setIsAddItemModalOpen(true)}
-                                className="p-3 bg-[#40B797] rounded-xl hover:bg-[#40b797b0] text-2xl text-white"
-                            >
-                                Novo Item
-                            </button>
+            <div className="h-full flex flex-col items-center ml-10 w-auto lg:flex flex-row md:ml-60">
+                <div className="w-full">
+                    <div className="flex flex-col lg:flex-row w-full items-center">
+                        <div className="flex lg:justify-start mt-8 w-full justify-center">
+                            <SelectSubisidiarie subisidiaries={subisidiaries} onSelectsubisidiary={handleSelectSubisidiarie} />
                         </div>
-                        <div className="ml-4">
-                            <button
-                                onClick={handleSaveQuantities}
-                                className="p-3 bg-[#40B797] rounded-xl hover:bg-[#40b797b0] text-2xl text-white"
-                            >
-                                Salvar Quantidades
-                            </button>
+                        <div className="flex lg:flex-row justify-center lg:justify-end w-full mt-8 mr-8  md:space-y-0 space-x-4">
+                            <div>
+                                <button
+                                    onClick={() => setIsAddItemModalOpen(true)}
+                                    className="p-3 bg-[#40B797] rounded-xl hover:bg-[#40b797b0] text-2xl text-white"
+                                >
+                                    Novo Item
+                                </button>
+                            </div>
+                            <div>
+                                <button
+                                    onClick={handleSaveQuantities}
+                                    className="p-3 bg-[#40B797] rounded-xl hover:bg-[#40b797b0] text-2xl text-white"
+                                >
+                                    Salvar Quantidades
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+
                 
 
                 <h1 className="text-4xl mt-8 mb-8">Estoque</h1>
 
                 <div className="w-5/6">
-                    <div className="grid grid-cols-7 gap-1 text-lg font-bold mb-4">
+                    <div className="grid grid-cols-7 gap-1 md:text-base lg:text-lg text-sm font-bold mb-4">
                         <p>Código</p>
                         <p>Nome</p>
                         <p>Preço de Venda</p>
@@ -194,7 +198,7 @@ const Page = () => {
                     </div>
 
                     {stockItems.map((stock, index) => (
-                        <div key={index} className="grid grid-cols-7 gap-2 text-lg mb-2 p-2 bg-[#513F46] rounded-lg">
+                        <div key={index} className="grid grid-cols-7 gap-2 lg:text-lg md:text-base text-sm mb-2 p-2 bg-[#513F46] rounded-lg">
                             <p>{stock.item.cod}</p>
                             <p>{stock.item.name}</p>
                             <p>R$ {stock.item.sell_price.toFixed(2)}</p>
@@ -205,7 +209,7 @@ const Page = () => {
                                 type="number"
                                 value={stock.quantity}
                                 onChange={(e) => handleQuantityChange(stock.item._id, Number(e.target.value))}
-                                className="h-10 w-20 text-center bg-gray-900 rounded-md"
+                                className="h-10 lg:w-20 md:w-15 w-10 text-center bg-gray-900 rounded-md"
                             />
                             <button onClick={() => handleDeleteItem(stock.item._id)}>🗑️</button>
                         </div>
