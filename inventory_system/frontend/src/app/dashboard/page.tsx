@@ -107,16 +107,16 @@ export default function Page() {
         <main className="h-screen w-screen m-0 flex flex-col">
             <SideBar></SideBar>
 
-            <div className=" h-24 w-auto flex flex-row ">
-              <div className="md:ml-72 ml-28 mt-14">
+            <div className="ml-10 h-24 w-auto flex flex-col lg:flex-row">
+              <div className="md:ml-52 ml-16 mt-14">
                 <SearchBar onSearch={handleSearch}/>
               </div>
-              <div className="mt-14">
+              <div className="md:ml-60 lg:ml-16 ml-16 mt-5 md:mt-[60px]">
                 <SelectSubisidiary subisidiaries={subisidiaries} onSelectsubisidiary={handleSelectSubisidiarie}></SelectSubisidiary>
               </div>
             </div>
 
-            <div className="flex flex-col lg:flex-row h-full w-full mt-10 ">
+            <div className="flex flex-col lg:flex-row h-full w-full mt-28">
                 <div className="h-full w-full md:min-h-48 flex flex-col items-center lg:ml-52 justify-center lg:w-1/2 ">
                     <div className="h-full w-1/12 lg:w-11/12 md:h-5/6  bg-[#513F46] rounded-2xl flex justify-center min-w-80 p-5 lg:p-10">
                     <PieChart data={data} />

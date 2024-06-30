@@ -15,8 +15,8 @@ const SelectSubisidiary: React.FC<SelectSubisidiaryProps> = ({ subisidiaries, on
   };
 
   return (
-    <div className="flex flex-row items-start">
-      <label htmlFor="subisidiary-selector" className="mb-2 text-2xl text-white  w-52">Selecione a Filial</label>
+    <div className="flex flex-col md:flex-row items-start">
+      <label htmlFor="subisidiary-selector" className="mb-2 text-xl md:text-2xl text-white  w-52">Selecione a Filial</label>
       <select
         id="subisidiary-selector"
         value={selectedsubisidiary}
