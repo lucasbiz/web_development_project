@@ -1,6 +1,8 @@
 {
   "/login/page": "app/login/page.js",
-  "/subsidiaries/page": "app/subsidiaries/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/notAllowed/page": "app/notAllowed/page.js",
   "/stock/page": "app/stock/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js"
+  "/account/page": "app/account/page.js",
+  "/subsidiaries/page": "app/subsidiaries/page.js"
 }

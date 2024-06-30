@@ -12,8 +12,7 @@ const withAuth = (WrappedComponent: React.ComponentType) => {
         useEffect(() => {
             const token = localStorage.getItem('token'); // Obtém o token do localStorage
             if (!token) { // Se não houver token
-                alert('Você precisa logar para acessar esta página!'); // Exibe um alerta informando que o login é necessário
-                router.push('/login'); // Redireciona para a página de login
+                router.push('/notAllowed'); // Redireciona para a página de erro
             } else {
                 setLoading(false); // Se houver um token, define loading como falso para permitir a renderização do WrappedComponent
             }
