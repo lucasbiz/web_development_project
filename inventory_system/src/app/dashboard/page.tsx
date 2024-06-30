@@ -107,7 +107,7 @@ export default function Page() {
         <main className="h-screen w-screen m-0 flex flex-col">
             <SideBar></SideBar>
 
-            <div className=" h-24 w-auto flex flex-row bg-red-500">
+            <div className=" h-24 w-auto flex flex-row">
               <div className="ml-72 mt-14">
                 <SearchBar onSearch={handleSearch}/>
               </div>
