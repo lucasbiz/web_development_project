@@ -31,4 +31,4 @@ O sistema é construído utilizando a Stack MERN, que inclui:
 
 <h2>Explicando cada tela</h2>
 <h3>Tela de login</h3>
-![Alt text](readme_images/login.jpg)
+![login](https://github.com/lucasbiz/web_development_project/assets/78614827/d83fc49e-67a2-4085-9090-08a6698d170d)
