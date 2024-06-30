@@ -1,8 +1,8 @@
 {
   "/login/page": "app/login/page.js",
   "/dashboard/page": "app/dashboard/page.js",
-  "/account/page": "app/account/page.js",
   "/stock/page": "app/stock/page.js",
+  "/account/page": "app/account/page.js",
   "/subsidiaries/page": "app/subsidiaries/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js"
 }
