@@ -7,6 +7,8 @@ import PieChart from "../components/PieChart";
 import SearchBar from "../components/SearchBar";
 import { useState, useEffect } from "react";
 import SelectSubisidiary from "../components/SelectSubsidiary";
+import withAuth from '../components/WithAuth'; // Importa o HOC withAuth
+
 
 export interface Item {
     cod: string
@@ -16,7 +18,7 @@ export interface Item {
   }
 
 
-export default function Page() {
+const Page = () => {
    // Define o estado 'items' para armazenar os itens e 'setItems' para atualizar o estado
   const [items, setItems] = useState<Item[]>([]);
   //  Define o estado 'searchQuery' para armazenar a consulta de pesquisa e 'setSearchQuery' para atualizar o estado
@@ -148,3 +150,5 @@ export default function Page() {
         </main>
     );
 }
+
+export default withAuth(Page);

@@ -9,9 +9,9 @@ export default function Home() {
 
             <h1 className="text-white text-3xl mt-28">Sistema de Controle de Estoque</h1>
 
-            <Link legacyBehavior href={"/login"}><button className=" h-10 w-36 mx-20 bg-green-500 mt-20 rounded-xl hover:bg-green-600">Tela de login</button></Link>
+            <Link legacyBehavior href={"/login"}><button className=" h-10 w-36 mx-20 bg-green-500 mt-20 rounded-xl hover:bg-green-600">Login</button></Link>
 
-            <Link legacyBehavior href={"/register"}><button className=" h-10 w-36 mx-20 bg-green-500 mt-20 rounded-xl hover:bg-green-600">Tela de Cadastro</button></Link>
+            <Link legacyBehavior href={"/register"}><button className=" h-10 w-36 mx-20 bg-green-500 mt-20 rounded-xl hover:bg-green-600">Cadastro</button></Link>
         </main>
     );
 }
