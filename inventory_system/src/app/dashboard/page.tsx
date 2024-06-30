@@ -98,37 +98,38 @@ export default function Page() {
         <main className="h-screen w-screen m-0 flex flex-col">
             <SideBar></SideBar>
 
-            <div className=" h-24 w-auto ">
-              <div className="ml-72 mt-14">
+            <div className=" h-24 w-auto  ">
+              <div className="md:ml-72 ml-28 mt-14">
                 <SearchBar onSearch={handleSearch}/>
               </div>
             </div>
 
-            <div className="flex flex-row h-5/6 w-full ">
-                <div className="h-full w-full flex flex-col items-center ml-52 justify-center">
-                    <div className="h-3/5 w-5/6 bg-[#513F46] rounded-2xl  flex justify-center">
-                        <PieChart data={data}/>
+            <div className="flex flex-col lg:flex-row h-full w-full mt-10 ">
+                <div className="h-full w-full md:min-h-48 flex flex-col items-center lg:ml-52 justify-center lg:w-1/2 ">
+                    <div className="h-full w-1/12 lg:w-11/12 md:h-5/6  bg-[#513F46] rounded-2xl flex justify-center min-w-80 p-5 lg:p-10">
+                    <PieChart data={data} />
                     </div>
                 </div>
-                <div className="bg-[#2F2428] w-1/2 h-full flex justify-center items-center">
-
-                    <div className="bg-[#513F46] rounded-2xl h-5/6 w-5/6 flex flex-col items-center overflow-y-auto">
-                        <h2 className="m-3 text-3xl">Itens in stock</h2>
-                        <div className="flex flex-row  w-full justify-start text-xl">
-                          <p className="ml-20">Name</p>
-                          <p className="ml-32">Quantity</p>
-                          <p className="ml-4">Sell Price</p>
-                          <p className="ml-4">Buy Price</p>
+                <div className="text-xl md:text-2xl w-full lg:w-1/2 h-full flex justify-center md:ml-52 lg:ml-0 items-center min-w-[300px] md:min-w-[500px] md:w-auto ">
+                    <div className="bg-[#513F46] rounded-2xl h-5/6 w-10/12 lg:w-11/12 md:w-5/6 flex flex-col items-center overflow-y-auto p-4">
+                        <h2 className="m-3 text-2xl md:text-3xl">Itens in stock</h2>
+                        <div className="flex flex-row w-full justify-around text-lg md:text-xl">
+                            <p className="ml-12 mx-2">Name</p>
+                            <p className="mx-2">Quantity</p>
+                            <p className="mx-2">Sell Price</p>
+                            <p className="mx-2 mr-12">Buy Price</p>
                         </div>
 
-                        {filteredItems.map((item) => {
-                            return (
-                                <ItemCard name={item.name} quantity={0} sellPrice={item.sell_price} buyPrice={item.buy_price}></ItemCard>
-                            );
-                        })}
-
+                        {filteredItems.map((item) => (
+                            <ItemCard
+                            key={item.name}
+                            name={item.name}
+                            quantity={0}
+                            sellPrice={item.sell_price}
+                            buyPrice={item.buy_price}
+                            />
+                        ))}
                     </div>
-
                 </div>
             </div>
 

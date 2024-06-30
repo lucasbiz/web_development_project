@@ -21,9 +21,9 @@ const SideBar = () => {
       </button>
 
       <aside 
-        className={`h-screen fixed top-0 left-0 bg-[#1D1317] transition-transform duration-300 transform ${
+        className={`h-full fixed top-0 left-0 bg-[#1D1317] transition-transform duration-300 transform ${
           isOpen ? "translate-x-0" : "-translate-x-full"
-        } md:translate-x-0 md:max-w-52 w-1/5 min-w-32 z-40`}
+        } md:translate-x-0 md:w-52 w-1/4 min-w-32 z-40`}
       >
         <div className="h-full flex flex-col items-center">
           {/*Elementos*/}
