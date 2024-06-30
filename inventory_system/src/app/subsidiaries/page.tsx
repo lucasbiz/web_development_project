@@ -3,8 +3,9 @@
 import SideBar from "../components/SideBar";
 import SubsidiariesCard from "../components/SubsidiarieCard";
 import { useState } from "react";
+import withAuth from "../components/WithAuth";
 
-export default function Page() {
+const Page = () => {
     const [name, setName] = useState("");
     const [location, setLocation] = useState("");
     const [subsidiaries, setSubsidiaries] = useState([
@@ -68,3 +69,5 @@ export default function Page() {
         </main>
     );
 }
+
+export default withAuth(Page);

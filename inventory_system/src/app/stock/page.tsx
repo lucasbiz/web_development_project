@@ -7,6 +7,7 @@ import AddItemModal from "./add-item";
 import {Simulate} from "react-dom/test-utils";
 import waiting = Simulate.waiting;
 import SelectSubisidiarie from "../components/SelectSubsidiary";
+import withAuth from "../components/WithAuth";
 
 interface Item {
     _id: string;
@@ -222,4 +223,4 @@ const Page = () => {
     );
 };
 
-export default Page;
+export default withAuth(Page);

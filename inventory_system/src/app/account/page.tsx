@@ -1,16 +1,25 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import jwt from "jsonwebtoken";
-
 import SideBar from "../components/SideBar";
+import withAuth from "../components/WithAuth";
 
-export default function Page() {
+
+const Page = () => {
     const [user, setUser] = useState<{ name: string; email: string }>({ name: "", email: "" });
+    const router = useRouter();
+
+    const accountLogOut = () => {
+        alert("Você saiu da sua conta")
+        localStorage.removeItem('token'); // Remove o token do localStorage
+        router.push('/login');// Redireciona para a tela de login
+    };
 
     useEffect(() => {
         const fetchUserData = async () => {
-            const token = localStorage.getItem('token');
+        const token = localStorage.getItem('token');
             if (!token) {
                 console.error("No token found");
                 return;
@@ -47,9 +56,12 @@ export default function Page() {
                 <img src="/user2.png" alt="" className="h-40 w-40" />
                 <p className="my-7">{user.name}</p>
                 <p className="my-7">{user.email}</p>
-                <button className="bg-[#EB9F27] rounded-2xl p-3 my-10 text-3xl hover:bg-[#CC8B24]">Mudar senha</button>
-                <button className="bg-white rounded-2xl p-3 my-10 text-3xl hover:bg-[#CC8B24]">Sair</button>
+                <button className="bg-[#EB9F27] rounded-2xl p-3 my-10 text-3xl hover:bg-[#CC8B24] transition duration-500 ease-in-out">Mudar senha</button>
+                <button onClick={accountLogOut} className="bg-[#EB9F27] rounded-2xl p-3 my-10 text-3xl hover:bg-[#CC8B24] transition duration-500 ease-in-out">Sair</button>
+
             </div>
         </main>
     );
 }
+
+export default withAuth(Page);
