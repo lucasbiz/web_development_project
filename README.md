@@ -23,11 +23,11 @@ O sistema é construído utilizando a Stack MERN, que inclui:
 
 <h3>Autores</h3>
 
-- Danrley Ribeiro
-- Eduardo Boçon
-- Lucas Teixeira
-- Raphael Schuck
-- Thiago Michelet
+- Danrley Moreira Ribeiro (23102664)
+- Eduardo Henrique Peixoto Boçon (23103123)
+- Lucas Biz Teixeira (18101812)
+- Raphael Schuck Hahn (23100761)
+- Thiago Michelet Quintaes Credidio (23100759)
 
 <h2>Explicando cada tela</h2>
 <h3>Tela de login</h3>
