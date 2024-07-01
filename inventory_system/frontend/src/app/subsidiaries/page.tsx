@@ -64,7 +64,7 @@ const Page = () => {
             <SideBar />
 
             <div className="md:ml-64 ml-5 p-8 w-full flex flex-col lg:flex-row md:mt-0 mt-8 items-center">
-                <div className="bg-[#513F46] p-6 rounded-2xl shadow-md mb-10 max-w-[400px] min-w-[400px] lg:mr-20 h-2/5">
+                <div className="bg-[#513F46] p-6 rounded-2xl shadow-md mb-10 max-w-[400px] min-w-[400px] lg:mr-20 h-2/5 min-h-[300px]">
                     <h2 className="text-3xl mb-4 text-white">Adicionar Nova Filial</h2>
                     <input
                         type="text"
