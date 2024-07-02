@@ -32,7 +32,7 @@ export default function Home() {
 // teste de conexao
 const testConnection = async () => {
     try {
-        const response = await fetch('http://localhost:3125/api/ping');
+        const response = await fetch('http://35.208.169.160:3125/api/ping');
         if (!response.ok) {
             throw new Error('Failed to connect');
         }

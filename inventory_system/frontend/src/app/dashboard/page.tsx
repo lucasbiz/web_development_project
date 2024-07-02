@@ -32,7 +32,7 @@ const Page = () => {
       const fetchItems = async () => {
           try {
               // Faz uma requisição HTTP GET para a URL do backend
-              const response = await fetch('http://localhost:3125/api/items');
+              const response = await fetch('http://35.208.169.160:3125/api/items');
               // Converte a resposta em JSON
               const data = await response.json();
               // Atualiza o estado 'items' com os dados recebidos
