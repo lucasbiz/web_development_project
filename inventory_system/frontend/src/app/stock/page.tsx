@@ -33,7 +33,7 @@ const Page = () => {
     useEffect(() => {
         const fetchItems = async () => {
             try {
-                const response = await fetch("http://35.208.169.160:3125/api/items");
+                const response = await fetch("http://127.0.0.1:3125/api/items");
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
@@ -42,7 +42,7 @@ const Page = () => {
                 const stockItemsWithQuantities = await Promise.all(
                     data.map(async item => {
                         try {
-                            const response = await fetch(`http://35.208.169.160:3125/api/stock/${item._id}`);
+                            const response = await fetch(`http://127.0.0.1:3125/api/stock/${item._id}`);
                             if (!response.ok) {
                                 throw new Error(`Falha ao buscar a quantidade do item ${item._id}`);
                             }
@@ -89,7 +89,7 @@ const Page = () => {
         try {
             // Update quantities in backend
             const promises = stockItems.map(stockItem =>
-                fetch(`http://35.208.169.160:3125/api/stock`, {
+                fetch(`http://127.0.0.1:3125/api/stock`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -109,7 +109,7 @@ const Page = () => {
     };
     const handleAddItem = async (name: string, sellPrice: number, buyPrice: number) => {
         try {
-            const response = await fetch("http://35.208.169.160:3125/api/items", {
+            const response = await fetch("http://127.0.0.1:3125/api/items", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -127,7 +127,7 @@ const Page = () => {
     };
     const handleDeleteItem = async (itemId: string) => {
         try {
-            const response = await fetch(`http://35.208.169.160:3125/api/items/${itemId}`, {
+            const response = await fetch(`http://127.0.0.1:3125/api/items/${itemId}`, {
                 method: 'DELETE',
             });
 

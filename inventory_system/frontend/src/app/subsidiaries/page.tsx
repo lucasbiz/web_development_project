@@ -17,7 +17,7 @@ const Page = () => {
     const fetchSubsidiaries = async () => {
             try {
                 // Faz uma requisição HTTP GET para a URL do backend
-                const response = await fetch('http://35.208.169.160:3125/api/subsidiaries');
+                const response = await fetch('http://localhost:3125/api/subsidiaries');
                 // Converte a resposta em JSON
                 const data = await response.json();
                 // Atualiza o estado 'items' com os dados recebidos
@@ -33,7 +33,7 @@ const Page = () => {
   
     const createSubsidiary = async (subsidiaryData: { name: string; location: string; stock: string }) => {
         try{
-        const response = await fetch('http://35.208.169.160:3125/api/subsidiaries', {
+        const response = await fetch('http://localhost:3125/api/subsidiaries', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -30,7 +30,7 @@ const Page = () => {
         const decodedToken: any = jwt.decode(token); // Decodifica o token JWT usando jsonwebtoken
         const userId = decodedToken.id; // Supondo que o token contém um campo `id` com o ID do usuário
 
-        const response = await fetch(`http://http://35.208.169.160:3125/api/users/${userId}`, {
+        const response = await fetch(`http://127.0.0.1:3125/api/users/${userId}`, {
           headers: {
             "x-auth-token": token, // Passa o token no cabeçalho da requisição
           },

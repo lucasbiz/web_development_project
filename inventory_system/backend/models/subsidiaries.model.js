@@ -16,7 +16,7 @@ const SubsidiariesSchema = new mongoose.Schema({
     stock: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Stock',
-        required: false
+        required: true
     },
     // Campo 'date' que será uma data, com valor padrão sendo a data e hora atuais
     date: {

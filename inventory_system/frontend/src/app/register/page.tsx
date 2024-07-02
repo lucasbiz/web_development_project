@@ -64,7 +64,7 @@ export default function Page() {
         };
 
         try {
-            const response = await fetch("http://35.208.169.160:3125/api/users", {
+            const response = await fetch("http://localhost:3125/api/users", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

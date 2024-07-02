@@ -16,7 +16,7 @@ export default function Page() {
         };
 
         try {
-            const response = await fetch("http://35.208.169.160:3125/api/login", {
+            const response = await fetch("http://127.0.0.1:3125/api/login", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
