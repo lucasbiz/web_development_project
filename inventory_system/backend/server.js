@@ -22,7 +22,7 @@ main().catch(err => console.log(err));
 
 async function main() {
     // Conecta ao MongoDB usando o endereço fornecido
-    mongoose.connect('mongodb://http://35.208.169.160:27017/')
+    mongoose.connect('mongodb://0.0.0.0:27017/')
     .then(() => {
       console.log('Conexão com MongoDB estabelecida com sucesso');
     })
